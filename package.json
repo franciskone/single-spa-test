@@ -6,7 +6,12 @@
   "author": "franciskone <francesco.cappelli.developer@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "single-spa": "^4.3.5"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-transition-group": "^4.1.1",
+    "single-spa": "^4.3.5",
+    "single-spa-react": "^2.10.2"
   },
   "scripts": {
     "start": "webpack-dev-server --open",
