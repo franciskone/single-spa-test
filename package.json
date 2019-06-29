@@ -6,11 +6,14 @@
   "author": "franciskone <francesco.cappelli.developer@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "angular": "^1.7.8",
+    "angular-ui-router": "^1.0.22",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-transition-group": "^4.1.1",
     "single-spa": "^4.3.5",
+    "single-spa-angularjs": "^3.0.1",
     "single-spa-react": "^2.10.2"
   },
   "scripts": {
