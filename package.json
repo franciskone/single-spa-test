@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "rimraf dist && yarn ember-install && yarn build-ember && yarn build-webpack",
+    "build": "rimraf dist && yarn ember-install && yarn build-webpack && yarn build-ember",
     "ember-install": "cd src/ember-app && yarn && cd ../..",
     "build-webpack": "webpack --config webpack.config.js",
     "build-ember": "cd src/ember-app && ember build --output-path ../../dist/ember-app/ --environment production && cd ../.."

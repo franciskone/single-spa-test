@@ -56,10 +56,12 @@ registerApplication(
 	APPS.EMBER.NAME,
 	() => loadEmberApp(
 		APPS.EMBER.NAME,
-		'/dist/ember-app/assets/ember-app-89d7846b60e1aad09167053e9f64c485.js',
-		'/dist/ember-app/assets/vendor-a665f80dbe5339ba5085e617191143c0.js'
+		'/dist/ember-app/assets/ember-app.js',
+		'/dist/ember-app/assets/vendor.js'
 	),
-	location => location.hash.startsWith('ember')
+	// location => location.hash.startsWith('ember'),
+	location => location.pathname === 'ember'
+
 );
 
 start();
