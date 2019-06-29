@@ -26,13 +26,12 @@ const Card = ({title, attrs}) => {
 	);
 };
 
-const getPeople = (page) => {
-	return fetch(`https://swapi.co/api/people/?page=${page}`)
+const getPeople = (page, signal) => {
+	return fetch(`https://swapi.co/api/people/?page=${page}`, { signal })
 		.then(res => res.json())
 		.then(data => {
 			return data.results;
-		});
-
+		})
 };
 
 export default () => {
@@ -48,18 +47,21 @@ export default () => {
 	};
 
 	useEffect(() => {
+		const controller = new AbortController();
+		const signal = controller.signal;
+
 		startFetch();
 		if(!items.length) {
 
 			Promise.all([
-				getPeople(1),
-				getPeople(2),
-				getPeople(3),
-				getPeople(4),
-				getPeople(5),
-				getPeople(6),
-				getPeople(7),
-				getPeople(8),
+				getPeople(1, signal),
+				getPeople(2, signal),
+				getPeople(3, signal),
+				getPeople(4, signal),
+				getPeople(5, signal),
+				getPeople(6, signal),
+				getPeople(7, signal),
+				getPeople(8, signal),
 			])
 			.then(resultsList => {
 				finishFetch();
@@ -67,7 +69,10 @@ export default () => {
 				const res = resultsList.reduce((acc, val) => [...acc, ...val], []);
 				setItems(res);
 
-			});
+			})
+			.catch(err => null);
+
+			return () => controller.abort();
 		}
 	}, []);
 
