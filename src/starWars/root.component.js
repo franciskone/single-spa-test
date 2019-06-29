@@ -40,11 +40,11 @@ export default () => {
 	const [items, setItems] = useState([]);
 
 	const startFetch = () => {
-		// setLoading(isLoading + 1);
+		setLoading(isLoading + 1);
 	};
 
 	const finishFetch = () => {
-		// setLoading(isLoading - 1);
+		setLoading(isLoading ? isLoading - 1 : 0);
 	};
 
 	useEffect(() => {
@@ -89,7 +89,7 @@ export default () => {
 						val: item.gender,
 					},
 				]}/>))
-				: <div>Loading</div>
+				: <div><a className="button is-large is-primary is-loading">Loading</a></div>
 			}
 		</div>
 	);
