@@ -14,11 +14,15 @@
     "react-transition-group": "^4.1.1",
     "single-spa": "^4.3.5",
     "single-spa-angularjs": "^3.0.1",
+    "single-spa-ember": "^0.2.0",
     "single-spa-react": "^2.10.2"
   },
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack --config webpack.config.js -p"
+    "build": "rimraf dist && yarn ember-install && yarn build-ember && yarn build-webpack",
+    "ember-install": "cd src/ember-app && yarn && cd ../..",
+    "build-webpack": "webpack --config webpack.config.js",
+    "build-ember": "cd src/ember-app && ember build --output-path ../../dist/ember-app/ --environment production && cd ../.."
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -29,7 +33,9 @@
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.0.0",
+    "ember-cli": "^3.10.1",
     "html-loader": "^0.5.5",
+    "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.5",

@@ -1,3 +1,5 @@
 node_modules
 dist
 .idea
+src/ember-app/node_modules
+src/ember-app/bower_components

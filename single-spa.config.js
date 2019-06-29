@@ -1,4 +1,5 @@
-import { registerApplication, start } from 'single-spa'
+import { registerApplication, start } from 'single-spa';
+import {loadEmberApp} from 'single-spa-ember';
 
 export const APPS = {
 	HOME: {
@@ -15,6 +16,11 @@ export const APPS = {
 		NAME: 'angularJS',
 		ROOT: '/angularJS',
 		LINK_NAME: 'Angular Js',
+	},
+	EMBER: {
+		NAME: 'ember-app',
+		ROOT: '/ember',
+		LINK_NAME: 'Ember App',
 	},
 };
 
@@ -44,6 +50,16 @@ registerApplication(
 	APPS.ANGULAR_JS.NAME,
 	() => import ('./src/angularJS/angularJS.app.js'),
 	pathPrefix(APPS.ANGULAR_JS.ROOT)
+);
+
+registerApplication(
+	APPS.EMBER.NAME,
+	() => loadEmberApp(
+		APPS.EMBER.NAME,
+		'/dist/ember-app/assets/ember-app-89d7846b60e1aad09167053e9f64c485.js',
+		'/dist/ember-app/assets/vendor-a665f80dbe5339ba5085e617191143c0.js'
+	),
+	location => location.hash.startsWith('ember')
 );
 
 start();
